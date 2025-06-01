@@ -17,22 +17,20 @@
   --color-cta-text: rgb(255, 255, 255);
   --color-cta-txt-active: rgb(255, 230, 9);
 }
- 
 /* Theme Overrides */
 .light-mode {
   --color-primary: rgb(17, 40, 74);
   --color-secondary: rgb(25, 179, 231);
   --color-accent: rgb(0, 0, 0);
-  --color-background: rgb(180, 216, 139);
+  --color-background: rgb(255, 255, 255);
   --color-card: rgb(255, 255, 255);
   --color-border-color: rgb(25, 179, 231);
 }
- 
+
 .dark-mode {
   /* already handled by :root */
-  --color-background: rgb(160, 0, 0);
 }
- 
+
 .red-mode {
   --color-primary: rgb(255, 255, 255);
   --color-secondary: rgb(255, 255, 255);
@@ -43,12 +41,10 @@
   --color-card: rgba(128, 3, 3, 0.623);
   --color-cta-text: rgb(0, 0, 0);
 }
- 
 /* Smooth transition */
 * {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
- 
 /* Gradient Animation Example */
 @keyframes gradientShift {
   0% {
@@ -61,7 +57,6 @@
     background-position: 0% 50%;
   }
 }
- 
 .animated-gradient {
   background: linear-gradient(
     -45deg,
@@ -72,4 +67,3 @@
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
- 

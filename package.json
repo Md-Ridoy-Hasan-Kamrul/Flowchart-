@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.7",
     "@tanstack/react-query": "^5.77.2",
@@ -17,6 +18,12 @@
     "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
     "d3": "^7.9.0",
+=======
+    "@tailwindcss/vite": "^4.1.7",
+    "@tanstack/react-query": "^5.77.2",
+    "@xyflow/react": "^12.6.4",
+    "axios": "^1.9.0",
+>>>>>>> 14d337447c140543ba27993b3505e7e10dca098f
     "firebase": "^11.8.1",
     "framer-motion": "^12.15.0",
     "i18next": "^25.2.1",
@@ -24,7 +31,10 @@
     "i18next-http-backend": "^3.0.2",
     "jodit-react": "^5.2.19",
     "js-cookie": "^3.0.5",
+<<<<<<< HEAD
     "postcss": "^8.5.4",
+=======
+>>>>>>> 14d337447c140543ba27993b3505e7e10dca098f
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-flow-renderer": "^10.3.17",
@@ -36,7 +46,11 @@
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
     "swiper": "^11.2.8",
+<<<<<<< HEAD
     "tailwindcss": "^4.1.8"
+=======
+    "tailwindcss": "^4.1.7"
+>>>>>>> 14d337447c140543ba27993b3505e7e10dca098f
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

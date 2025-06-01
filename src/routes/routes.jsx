@@ -5,38 +5,37 @@ import LoginPage from '../pages/Authentication/LoginPage/LoginPage';
 import RegisterPage from '../pages/Authentication/RegisterPage/RegisterPage';
 import Home from '../pages/Home/Home';
 import FlowchartPage from '../pages/FlowchartPage/FlowchartPage';
-import PrivateRoute from './PrivadeRoutes';
+import FlowChart from '../pages/FlowchartPage/FlowChart';
 
 // import { lazy } from "react";
 // const Contact = lazy(() => import("../pages/Contact/Contact"));
 
 const AppRoutes = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <MainLayOut />,
     errorElement: <ErrorPage />,
     children: [
+      // {
+      //   index: true,
+      //   element: <Home />,
+      // },
       {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/login",
+        path: '/login',
         element: <LoginPage />,
       },
       {
-        path: "/register",
+        path: '/register',
         element: <RegisterPage />,
       },
       {
-        path: "/flowchart",
-        element: (
-          <PrivateRoute>
-            <FlowchartPage />
-          </PrivateRoute>
-        ),
+        path: '/flowchart',
+        element: <FlowchartPage />,
       },
-
+      {
+        path: '/flow',
+        element: <FlowChart />,
+      },
     ],
   },
 ]);
