@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import MainFooter from '../../../layouts/MainFooter/MainFooter';
 
 function HomePage() {
   return (
