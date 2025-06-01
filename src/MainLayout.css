@@ -1,0 +1,30 @@
+/* src/MainLayout.css */
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* পুরো স্ক্রীন উচ্চতা দখল করবে */
+    background-color: #f9fafb; /* তোমার পছন্দমতো পরিবর্তন করো */
+  }
+  
+  .app-main-content {
+    flex-grow: 1; /* বাকিটা জায়গা নেবে */
+    padding: 20px; /* পেজের ভিতরের প্যাডিং */
+    /* প্রয়োজনে margin বা overflow দেখো */
+  }
+  
+  footer {
+    flex-shrink: 0; /* ফুটার ছোট হবে না */
+    background-color: #19398A; /* ফুটারের ব্যাকগ্রাউন্ড কালার */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
