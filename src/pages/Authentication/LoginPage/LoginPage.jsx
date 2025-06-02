@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { AuthContext } from "../../../context/AuthContext/AuthContext";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../../context/AuthContext/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const { signInUser, isLoading, setIsLoading } = useContext(AuthContext);
@@ -18,15 +18,9 @@ function LoginPage() {
     try {
       setIsLoading(true);
       const userCredential = await signInUser(email, password);
-      const user = userCredential.user;
-
-      console.log('✅ User login:', user);
       toast.success('User login successfully!');
-
-      // ✅ Redirect after login
       navigate('/flowchart');
     } catch (error) {
-      console.error('❌ Login failed:', error.message);
       toast.error(error.message || 'Login failed!');
     } finally {
       setIsLoading(false);
@@ -34,70 +28,143 @@ function LoginPage() {
   };
 
   return (
-    <section className='min-h-screen flex items-center justify-center bg-[var(--color-background)] px-4'>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className='w-full max-w-sm bg-[var(--color-card)] p-8 rounded-xl shadow-md space-y-6'
-      >
-        <h2 className='text-2xl font-semibold text-center text-[var(--color-accent)]'>
-          Login to your account
-        </h2>
-
-        {/* Email */}
-        <div className='space-y-1'>
-          <label htmlFor='email' className='text-sm text-[var(--color-accent)]'>
-            Email Address
-          </label>
-          <input
-            id='email'
-            type='email'
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: 'Invalid email address',
-              },
-            })}
-            className='w-full px-4 py-2 rounded-md bg-transparent border border-[var(--color-border-color)] text-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]'
+    // Apply the font family to the main section to affect all its children
+    <section
+      className='min-h-screen bg-gradient-to-tr from-white via-blue-50 to-blue-100 flex items-center justify-center px-6 py-12'
+      style={{ fontFamily: 'var(--font-secondary)' }}
+    >
+      <div className='container max-w-6xl bg-white rounded-3xl shadow-lg flex flex-col md:flex-row overflow-hidden'>
+        {/* Left Image Section */}
+        <div className='md:w-1/2 hidden md:block'>
+          <img
+            src='./login.png'
+            alt='Login Visual'
+            className='object-cover w-full h-full'
           />
-          {errors.email && (
-            <p className='text-red-500 text-sm'>{errors.email.message}</p>
-          )}
         </div>
 
-        {/* Password */}
-        <div className='space-y-1'>
-          <label
-            htmlFor='password'
-            className='text-sm text-[var(--color-accent)]'
+        {/* Right Form Section */}
+        <div className='md:w-1/2 w-full p-10 flex flex-col justify-center'>
+          <h2 className='text-3xl font-extrabold text-[#19398A] text-center mb-10'>
+            Login to your account
+          </h2>
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            className='space-y-6'
           >
-            Password
-          </label>
-          <input
-            id='password'
-            type='password'
-            {...register('password', {
-              required: 'Password is required',
-              minLength: {
-                value: 6,
-                message: 'Password must be at least 6 characters',
-              },
-            })}
-            className='w-full px-4 py-2 rounded-md bg-transparent border border-[var(--color-border-color)] text-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]'
-          />
-          {errors.password && (
-            <p className='text-red-500 text-sm'>{errors.password.message}</p>
-          )}
-        </div>
+            {/* Email */}
+            <div>
+              <label
+                htmlFor='email'
+                className='block mb-2 text-sm font-semibold text-gray-700'
+              >
+                Email Address
+              </label>
+              <input
+                id='email'
+                type='email'
+                placeholder='you@example.com'
+                autoComplete='email'
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Invalid email address',
+                  },
+                })}
+                className={`w-full px-5 py-3 rounded-xl border text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#19398A] transition ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
+                style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to input
+              />
+              {errors.email && (
+                <p className='mt-1 text-red-600 text-sm'>
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
 
-        {/* Submit Button */}
-        <input
-          type='submit'
-          value={isLoading ? 'Logging in...' : 'Login'}
-          disabled={isLoading}
-          className='w-full py-2 rounded-md bg-[var(--color-primary)] text-white hover:bg-[var(--color-cta-active)] cursor-pointer transition'
-        />
-      </form>
+            {/* Password */}
+            <div>
+              <label
+                htmlFor='password'
+                className='block mb-2 text-sm font-semibold text-gray-700'
+              >
+                Password
+              </label>
+              <input
+                id='password'
+                type='password'
+                placeholder='********'
+                autoComplete='current-password'
+                {...register('password', {
+                  required: 'Password is required',
+                  minLength: {
+                    value: 6,
+                    message: 'Password must be at least 6 characters',
+                  },
+                })}
+                className={`w-full px-5 py-3 rounded-xl border text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#19398A] transition ${
+                  errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
+                style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to input
+              />
+              {errors.password && (
+                <p className='mt-1 text-red-600 text-sm'>
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type='submit'
+              disabled={isLoading}
+              className='w-full py-3 rounded-xl bg-[#19398A] text-white font-semibold text-lg hover:bg-[#152e6c] disabled:bg-gray-400 disabled:cursor-not-allowed flex justify-center items-center gap-3 transition'
+              style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to button
+            >
+              {isLoading && (
+                <svg
+                  className='animate-spin h-5 w-5 text-white'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  aria-hidden='true'
+                >
+                  <circle
+                    className='opacity-25'
+                    cx='12'
+                    cy='12'
+                    r='10'
+                    stroke='currentColor'
+                    strokeWidth='4'
+                  ></circle>
+                  <path
+                    className='opacity-75'
+                    fill='currentColor'
+                    d='M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z'
+                  ></path>
+                </svg>
+              )}
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
+          </form>
+
+          {/* Register Link */}
+          <p className='mt-6 text-center text-gray-600'>
+            Don't have an account?{' '}
+            <a
+              href='/register'
+              className='text-[#19398A] font-semibold hover:underline'
+              style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to link
+            >
+              Register
+            </a>
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

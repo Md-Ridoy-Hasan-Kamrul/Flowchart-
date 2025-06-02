@@ -46,11 +46,6 @@ const Navbar = () => {
           <Link to='/flowchart' className='hover:text-gray-300'>
             Flowchart
           </Link>
-          <input
-            type='checkbox'
-            value='synthwave'
-            className='toggle theme-controller'
-          />
         </div>
 
         {/* Right: Mobile Hamburger with same fixed width */}
