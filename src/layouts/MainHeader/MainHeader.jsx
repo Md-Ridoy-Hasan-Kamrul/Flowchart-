@@ -1,13 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext/AuthContext';
-import { toast } from 'react-toastify';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/AuthContext/AuthContext';
+import { useTheme } from '../../context/ThemeContext/ThemeProvider';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   const logOutHandler = () => {
     logOutUser();
@@ -19,7 +21,7 @@ const Navbar = () => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className='bg-[#19398a] text-white h-24'>
+    <nav className='bg-background text-white h-24'>
       <div className='max-w-[1400px] mx-auto flex justify-between items-center h-full px-6 py-6'>
         {/* Left: Logo container with fixed width */}
         <div className='w-[250px] flex items-center justify-center'>
@@ -46,6 +48,9 @@ const Navbar = () => {
           <Link to='/flowchart' className='hover:text-gray-300'>
             Flowchart
           </Link>
+          <button className='cursor-pointer' onClick={toggleTheme}>
+            Switch Theme
+          </button>
         </div>
 
         {/* Right: Mobile Hamburger with same fixed width */}

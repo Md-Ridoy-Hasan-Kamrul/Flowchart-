@@ -41,4 +41,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// useTheme hook moved to a separate file (useTheme.js)
+export const useTheme = () => useContext(ThemeContext);
