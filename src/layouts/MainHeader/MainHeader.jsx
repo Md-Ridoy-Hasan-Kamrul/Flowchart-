@@ -43,10 +43,14 @@ const Navbar = () => {
           <Link to='/register' className='hover:text-gray-300'>
             Registration
           </Link>
-          <Link to="/flowchart" className="hover:text-gray-300">
+          <Link to='/flowchart' className='hover:text-gray-300'>
             Flowchart
           </Link>
-          
+          <input
+            type='checkbox'
+            value='synthwave'
+            className='toggle theme-controller'
+          />
         </div>
 
         {/* Right: Mobile Hamburger with same fixed width */}

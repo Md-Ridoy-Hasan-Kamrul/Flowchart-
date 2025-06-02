@@ -4,7 +4,7 @@ import ErrorPage from '../components/ErrorPage/ErrorPage';
 import LoginPage from '../pages/Authentication/LoginPage/LoginPage';
 import RegisterPage from '../pages/Authentication/RegisterPage/RegisterPage';
 import FlowchartPage from '../pages/FlowchartPage/FlowchartPage';
-import FlowChart from '../pages/FlowchartPage/FlowChart';
+import Home from '../pages/Home/Home';
 
 // import { lazy } from "react";
 // const Contact = lazy(() => import("../pages/Contact/Contact"));
@@ -30,10 +30,6 @@ const AppRoutes = createBrowserRouter([
       {
         path: '/flowchart',
         element: <FlowchartPage />,
-      },
-      {
-        path: '/flow',
-        element: <FlowChart />,
       },
     ],
   },
