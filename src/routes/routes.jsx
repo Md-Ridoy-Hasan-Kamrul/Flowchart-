@@ -5,7 +5,7 @@ import LoginPage from '../pages/Authentication/LoginPage/LoginPage';
 import RegisterPage from '../pages/Authentication/RegisterPage/RegisterPage';
 import Home from '../pages/Home/Home';
 import FlowchartPage from '../pages/FlowchartPage/FlowchartPage';
-import PrivateRoute from './PrivadeRoutes';
+import PrivateRoute from './PrivateRoutes';
 import Flowchart from '../pages/FlowchartPage/Flowchart';
 
 // import { lazy } from "react";
