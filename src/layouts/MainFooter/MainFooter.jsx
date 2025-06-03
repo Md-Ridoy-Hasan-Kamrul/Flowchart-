@@ -20,7 +20,7 @@ const socialLinks = [
 ];
 
 const MainFooter = () => (
-  <footer className='bg-gray-900 text-gray-300 py-6'>
+  <footer className='bg-background text-gray-300 py-6'>
     <div className='max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6'>
       <div
         className='mt-6 text-center text-xs text-white select-none'

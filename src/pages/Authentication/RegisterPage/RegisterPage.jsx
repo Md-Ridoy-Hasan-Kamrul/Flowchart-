@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../../context/ThemeContext/ThemeProvider';
 
 function RegisterPage() {
   const { createUser, isLoading, setIsLoading } = useContext(AuthContext);
@@ -28,6 +29,11 @@ function RegisterPage() {
       setIsLoading(false);
     }
   };
+  const { theme } = useTheme();
+  const themeImageMap = {
+    'light-mode': './finalblue.png',
+    'dark-mode': './finalRed.png',
+  };
 
   return (
     // Apply the font family to the main section to affect all its children
@@ -37,11 +43,11 @@ function RegisterPage() {
     >
       <div className='container max-w-6xl bg-white rounded-3xl shadow-lg flex flex-col md:flex-row overflow-hidden h-full'>
         {/* Left Image Section */}
-        <div className='md:w-1/2 hidden md:block h-full'>
+        <div className='md:w-1/2 hidden md:block p-12'>
           <img
-            src='./login.png'
-            alt='Register Visual'
-            className='object-contain w-full h-full'
+            src={themeImageMap[theme] || './finalblue.png'}
+            alt='Login Visual'
+            className='object-cover w-full h-full'
           />
         </div>
 
@@ -149,7 +155,7 @@ function RegisterPage() {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full py-3 rounded-xl bg-[#19398A] text-white font-semibold text-lg hover:bg-[#152e6c] disabled:bg-gray-400 disabled:cursor-not-allowed flex justify-center items-center gap-3 transition'
+              className='w-full py-3 rounded-xl bg-background text-white font-semibold text-lg hover:bg-[#152e6c] disabled:bg-gray-400 disabled:cursor-not-allowed flex justify-center items-center gap-3 transition'
               style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to button
             >
               {isLoading && (

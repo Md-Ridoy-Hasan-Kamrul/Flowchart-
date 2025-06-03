@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../../context/ThemeContext/ThemeProvider';
 
 function LoginPage() {
   const { signInUser, isLoading, setIsLoading } = useContext(AuthContext);
@@ -13,6 +14,8 @@ function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { theme } = useTheme();
 
   const onSubmit = async ({ email, password }) => {
     try {
@@ -27,17 +30,22 @@ function LoginPage() {
     }
   };
 
+  // Theme-based GIF path
+  const themeImageMap = {
+    'light-mode': './finalblue.png',
+    'dark-mode': './finalRed.png',
+  };
+
   return (
-    // Apply the font family to the main section to affect all its children
     <section
       className='min-h-screen bg-gradient-to-tr from-white via-blue-50 to-blue-100 flex items-center justify-center px-6 py-12'
       style={{ fontFamily: 'var(--font-secondary)' }}
     >
       <div className='container max-w-6xl bg-white rounded-3xl shadow-lg flex flex-col md:flex-row overflow-hidden'>
         {/* Left Image Section */}
-        <div className='md:w-1/2 hidden md:block'>
+        <div className='md:w-1/2 hidden md:block p-12'>
           <img
-            src='./login.png'
+            src={themeImageMap[theme] || './finalblue.png'}
             alt='Login Visual'
             className='object-cover w-full h-full'
           />
@@ -77,7 +85,6 @@ function LoginPage() {
                 className={`w-full px-5 py-3 rounded-xl border text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#19398A] transition ${
                   errors.email ? 'border-red-500' : 'border-gray-300'
                 }`}
-                style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to input
               />
               {errors.email && (
                 <p className='mt-1 text-red-600 text-sm'>
@@ -109,7 +116,6 @@ function LoginPage() {
                 className={`w-full px-5 py-3 rounded-xl border text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#19398A] transition ${
                   errors.password ? 'border-red-500' : 'border-gray-300'
                 }`}
-                style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to input
               />
               {errors.password && (
                 <p className='mt-1 text-red-600 text-sm'>
@@ -122,8 +128,7 @@ function LoginPage() {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full py-3 rounded-xl bg-[#19398A] text-white font-semibold text-lg hover:bg-[#152e6c] disabled:bg-gray-400 disabled:cursor-not-allowed flex justify-center items-center gap-3 transition'
-              style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to button
+              className='w-full py-3 rounded-xl bg-background text-white font-semibold text-lg hover:bg-[#152e6c] disabled:bg-gray-400 disabled:cursor-not-allowed flex justify-center items-center gap-3 transition'
             >
               {isLoading && (
                 <svg
@@ -131,7 +136,6 @@ function LoginPage() {
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
-                  aria-hidden='true'
                 >
                   <circle
                     className='opacity-25'
@@ -158,7 +162,6 @@ function LoginPage() {
             <a
               href='/register'
               className='text-[#19398A] font-semibold hover:underline'
-              style={{ fontFamily: 'var(--font-secondary)' }} // Apply directly to link
             >
               Register
             </a>
