@@ -118,8 +118,8 @@ const Navbar = () => {
                   z-10 // Ensure text is above the slider
                   ${
                     theme === 'dark-mode'
-                      ? 'text-gray-300 opacity-100' // Dark mode এ Light অপশন Visible
-                      : 'text-white opacity-0' // Light mode এ Light অপশন Invisible
+                      ? 'text-gray-300 opacity-100'
+                      : 'text-white opacity-0'
                   }
                   transition-opacity duration-300
                 `}
